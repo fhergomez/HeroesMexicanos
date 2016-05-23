@@ -1,5 +1,5 @@
 {
-  "name": "BestDressed",
+  "name": "heroes_mexicanos",
   "version": "1.0.0",
   "main": "server/app.js",
   "dependencies": {
@@ -36,5 +36,30 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "private": true
+  "private": true,
+  "description": "Navega a esta carpeta y ejecuta en la linea de comando:",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fhergomez/HeroesMexicanos.git"
+  },
+  "keywords": [
+    "heroes",
+    "mexicanos",
+    "angularJS",
+    "Node.js",
+    "express.js",
+    "HTML",
+    "CSS",
+    "MongoDB"
+  ],
+  "author": "Fernando Gomez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fhergomez/HeroesMexicanos/issues"
+  },
+  "homepage": "https://github.com/fhergomez/HeroesMexicanos#readme"
 }
