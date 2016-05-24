@@ -2,7 +2,7 @@
 
 var scrapers = {};
 
-scrapers.['wikipedia'] = require('./scrapers/wikipedia.js');
+scrapers['wikipedia'] = require('./scrapers/wikipedia.js');
 
 exports.scrape = function(req,res) {
   var url = req.body.url;

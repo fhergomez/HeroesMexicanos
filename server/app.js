@@ -12,7 +12,15 @@ var mongoose = require('mongoose');
 var config = require('./config/environment');
 
 // Connect to database
-mongoose.connect(config.mongo.uri, config.mongo.options);
+mongoose.connect(config.mongo.uri, config.mongo.options, function(err){
+  if (err) {
+    console.log('Failed connecting to MongoDB');
+  } else {
+    console.log('Successfully connected to MongoDB');
+  }
+});
+
+//
 
 // Populate DB with sample data
 if (config.seedDB) {
