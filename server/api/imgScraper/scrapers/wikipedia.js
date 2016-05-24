@@ -8,8 +8,15 @@ exports.list = function(url,cb){
   request(url,function(error,res,body){
     if (error) {
       cb({
-        err
-      })
+        error: error
+      });
+    }
+    if (!error) {
+      var $ = cheerio.load(body);
+      var pin = {};
+      var $url = url;
+      var $img = // get from wikipedia
+      var $desc = // description from wikipedia
     }
   })
 }
