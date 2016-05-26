@@ -6,25 +6,25 @@
         <button type="button"
                     class="close"
                     ng-click="$hide()"><i class="fa fa-times"></i></button>
-        <h4 class="modal-title">Add Your Look</h4>
+        <h4 class="modal-title">Añade tu heroe</h4>
       </div>
 
   <div class="modal-body"
           ng-show="scrapePostForm">
     <form ng-submit="addScrapePost()"
               style="margin-top:30px">
-      <h3>Find a Look</h3>
+      <h3>Busca tu heroe</h3>
       <div class="form-group">
         <input type="text"
                   class="form-control"
                   placeholder="Title"
-                  ng-model="look.title">
+                  ng-model="heroe.title">
       </div>
       <div class="form-group">
         <input type="text"
                   class="form-control"
                   placeholder="Link URL  (Wikipedia)"
-                  ng-model="look.link"
+                  ng-model="heroe.link"
                   ng-disabled="gotScrapeResults">
       </div>
 
@@ -43,13 +43,13 @@
                       class="col-xs-12">Description</label></div>
             <textarea class="form-control"
                            rows="3"
-                           ng-model="look.description">
+                           ng-model="heroe.description">
                     </textarea>
               </div>
 
            <div class="form-group">
              <div class="listing-image">
-                <img src="{{look.imgThumb}}"
+                <img src="{{heroe.imgThumb}}"
                         class="img img-thumbnail img-responsive">
               </div>
              </div>
