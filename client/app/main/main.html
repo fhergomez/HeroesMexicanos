@@ -1,1 +1,28 @@
-<h1>Hello World</h1>
+<div class="container">
+      <!-- Search, and Upload Button -->
+      <div id="searchFilterWrap">
+        <form id="searchForm">
+          <input type="text"
+                    id="searchBox"
+                    placeholder="Busca por nombre"
+                    ng-model="searchTxt"
+                    ng-model-options="{debounce : 600}" />
+        </form>
+
+      <div class="row">
+        <div id="sortByWrap">
+          Ordenalos por:<i class="fa fa-calendar"
+                            ng-click="sortByTime()"></i>
+                        <i class="fa fa-thumbs-up"
+                            ng-click="sortByLikes()"></i>
+
+          <button class="btn btn-primary add-look-btn"
+                      data-animation="am-fade-and-scale"
+                      data-placement="center"
+                      data-template-url="app/main/addHeroeModal.html"
+                      bs-modal="showModal">Añade tu Heroe</button>
+              </div>
+            </div>
+          </div>
+
+</div>
