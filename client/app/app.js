@@ -11,7 +11,7 @@
       'ngFileUpload',
       'angularGrid',
       'angularMoment',
-      'mgcrea.ngStrap'
+      'mgcrea.ngStrap' // for documentation got to http://mgcrea.github.io/angular-strap
     ])
     .config(config)
     .run(run)
