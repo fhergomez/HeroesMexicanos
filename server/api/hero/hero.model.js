@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var HeroSchema = new Schema ({
+var HeroeSchema = new Schema ({
   image: String,
   linkURL: String,
   title: String,
@@ -31,4 +31,6 @@ var HeroSchema = new Schema ({
   }
 });
 
-module.exports = mongoose.model('Hero', HeroSchema);
+var model = mongoose.model('Heroe', HeroeSchema);
+
+module.exports = model;
