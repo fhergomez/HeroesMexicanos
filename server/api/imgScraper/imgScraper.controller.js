@@ -16,7 +16,7 @@ exports.scrape = function(req,res) {
 
   // the list method is being passed from wikipedia.js
   scrapers[scraperToUse].list(url, function(data){
-    console.log('data from scraper:', data);
+    console.log('data from scraper: ', data);
     res.json(data);
   });
 }
