@@ -15,8 +15,8 @@ exports.list = function(url,cb){
       var $ = cheerio.load(body);
       var pin = {};
       var $url = url;
-      var $img = $('.mw-content-ltra .image img').attr('src'); // get from wikipedia
-      var $desc = $('.mw-content-ltra p') // description from wikipedia
+      var $img = $('.image img').attr('src'); // get from wikipedia
+      var $desc = $('.mw-content-ltr p:first-child b') // description from wikipedia
 
       console.log($img + ' pin url');
 
@@ -29,5 +29,5 @@ exports.list = function(url,cb){
       // respond with the final JSON object
       cb(pin);
     }
-  })
+  });
 }
