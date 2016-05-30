@@ -16,7 +16,7 @@ exports.list = function(url,cb){
       var pin = {};
       var $url = url;
       var $img = $('.image img').attr('src'); // get from wikipedia
-      var $desc = $('.mw-content-ltr b') // description from wikipedia
+      var $desc = $('.mw-content-ltr p').eq(0).text(); // description from wikipedia
 
       console.log($img + ' pin url');
 
