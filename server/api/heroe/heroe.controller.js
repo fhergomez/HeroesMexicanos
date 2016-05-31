@@ -1,25 +1,25 @@
 'use strict';
 
 var _ = require('lodash');
-var Look = require('./heroe.model');
+var Heroe = require('./heroe.model');
 var path = require('path');
-// var utils = require('../../utils/utils.js');
+var utils = require('../../utils/utils.js');
 
-exports.allLooks = function(req, res) {
-  Look.find({})
+exports.allHeroes = function(req, res) {
+  Heroe.find({})
     .sort({
       createTime: -1
     })
-    .exec(function(err, looks) {
+    .exec(function(err, heroes) {
       if(err){
         return handleError(res, err);
       }
-      if(!looks) {
+      if(!heroes) {
         return res.send(404);
       }
-      console.log(looks);
+      console.log(heroes);
       return res.status(200)
-        .json(looks);
+        .json(heroes);
     })
 }
 
@@ -29,17 +29,17 @@ exports.scrapeUpload = function(req, res) {
   utils.downloadURI(req.body.image, '../client/assets/images/uploads/' + random + '.png', function(filename) {
     console.log('done');
 
-    var newLook = new Look();
-    newLook.title = req.body.title;
-    newLook.email = req.body.email;
-    newLook.linkURL = req.body.linkURL;
-    newLook.description = req.body.description;
-    newLook.userName = req.body.name;
-    newLook._creator = req.body._creator;
-    newLook.createTime = Date.now();
-    newLook.upVotes = 0;
-    newLook.image = filename.slice(9);
-    newLook.save(function(err, item) {
+    var newHeroe = new Heroe();
+    newHeore.title = req.body.title;
+    newHeroe.email = req.body.email;
+    newHeroe.linkURL = req.body.linkURL;
+    newHeroe.description = req.body.description;
+    newHeroe.userName = req.body.name;
+    newHeroe._creator = req.body._creator;
+    newHeroe.createTime = Date.now();
+    newHeroe.upVotes = 0;
+    newHeroe.image = filename.slice(9);
+    newHeroe.save(function(err, item) {
       if (err) {
         console.log('error occured saving image');
       } else {
