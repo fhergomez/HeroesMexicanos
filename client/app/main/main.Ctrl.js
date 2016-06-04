@@ -62,7 +62,7 @@
         name: $scope.user.name,
         _creator: $scope.user._id
       }
-      $http.post('/api/heroe/scrapeUpload', heroe).then(function(data){
+      $http.post('./api/heroe/scrapeUpload', heroe).then(function(data){
         $scope.showScrapeDetails = false;
         $scope.gotScrapeResults = false;
         $scope.heroe.title = "";

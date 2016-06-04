@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
-var UserSchema = new Schema({
+var UserSchema = new mongoose.Schema({
   name: String,
   email: {
     type: String,
