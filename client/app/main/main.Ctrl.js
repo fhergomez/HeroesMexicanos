@@ -5,9 +5,9 @@
     .module('app')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', '$http'];
+  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI'];
 
-  function MainCtrl($scope, $state, Auth, $modal, $http) {
+  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI) {
     $scope.user = Auth.getCurrentUser();
 
     $scope.heroe = {};
@@ -32,9 +32,10 @@
     $scope.$watch('heroe.link', function(newVal, oldVal){
       if (newVal.length > 5) {
         $scope.loading = true;
-        $http.post('/api/links/scrape',{
-          url: $scope.heroe.link
-        }).then(function(data){
+        var link = {
+          url:$scope.heroe.link
+        }
+        scrapeAPI.getScrapeDetails(link).then(function(data){
           console.log(data);
           $scope.showScrapeDetails = true;
           $scope.gotScrapeResults = true;
@@ -63,7 +64,7 @@
         name: $scope.user.name,
         _creator: $scope.user._id
       }
-      $http.post('/api/heroe/scrapeUpload', heroe).then(function(data){
+      heroesAPI.createScrapeHeroe(heroe).then(function(data){
         $scope.showScrapeDetails = false;
         $scope.gotScrapeResults = false;
         $scope.heroe.title = "";
