@@ -46,6 +46,14 @@
       myModal.$promise.then(myModal.show);
     }
 
+    // will display all heroes from database
+    heroesAPI.getAllHeroes().then(function(data){
+      console.log(data);
+      $scope.heroes = data.data;
+    }).catch(function(err){
+      console.log('failed to get heroes' + err);
+    });
+
     // Watch for changes to URL, scrape and display resuslts
     $scope.$watch('heroe.link', function(newVal, oldVal){
       if (newVal.length > 5) {
