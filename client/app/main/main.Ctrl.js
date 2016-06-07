@@ -20,8 +20,8 @@
     $scope.loading = false; // spinner
 
     var alertSuccess = $alert({
-      title: 'Success!',
-      content: 'Nuevo heroe ha sido añadido',
+      title: 'Felicidades!',
+      content: 'Tu nuevo héroe ha sido añadido',
       placement: 'top-right',
       container: '#alertContainer',
       type: 'success',
@@ -29,8 +29,8 @@
     });
 
     var alertFail = $alert({
-      title: 'No se guardo su heroe!',
-      content: 'Nuevo heroe no se añadio',
+      title: 'No se guardo su héroe!',
+      content: 'Tu nuevo héroe no se añadio',
       placement: 'top-right',
       container: '#alertContainer',
       type: 'warning',
