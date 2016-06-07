@@ -5,9 +5,9 @@
     .module('app')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI'];
+  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI', '$alert'];
 
-  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI) {
+  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI, $alert) {
     $scope.user = Auth.getCurrentUser();
 
     $scope.heroe = {};
@@ -18,6 +18,24 @@
     $scope.showScrapeDetails = false;
     $scope.gotScrapeResults = false;
     $scope.loading = false; // spinner
+
+    var alertSuccess = $alert({
+      title: 'Success!',
+      content: 'Nuevo heroe ha sido añadido',
+      placement: 'top-right',
+      container: '#alertContainer',
+      type: 'success',
+      duration: 8
+    });
+
+    var alertFail = $alert({
+      title: 'No se guardo su heroe!',
+      content: 'Nuevo heroe no se añadio',
+      placement: 'top-right',
+      container: '#alertContainer',
+      type: 'warning',
+      duration: 8
+    })
 
     var myModal = $modal({ // this will trigger the modal popup
       scope: $scope,
@@ -65,13 +83,17 @@
         _creator: $scope.user._id
       }
       heroesAPI.createScrapeHeroe(heroe).then(function(data){
+        alertSuccess.show();
         $scope.showScrapeDetails = false;
         $scope.gotScrapeResults = false;
         $scope.heroe.title = "";
         $scope.heroe.link = "";
+        $scope.heroes.splice(0,0,data.data);
         console.log(data);
       }).catch(function(){
+        alertFail.show();
         console.log('failed to post');
+        console.log(alertFail);
         $scope.showScrapeDetails = false;
       })
     }
