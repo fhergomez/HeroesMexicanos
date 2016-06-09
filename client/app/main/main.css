@@ -19,9 +19,20 @@ p.description {
   width: 400px;
   padding: 10px 15px;
 }
+.uploadLookTitle {
+  max-width: 300px;
+  margin-left: 20px;
+}
 .inputArea {
   width: 300px;
   height: 20px;
+}
+.item {
+  width: 100%;
+  height: 100%;
+}
+.progress {
+  margin-top: 20px;
 }
 .form-control {
   display: inline;
