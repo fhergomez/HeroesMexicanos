@@ -43,7 +43,10 @@ module.exports = function(app) {
       console.log(file.originalname + ' is starting...')
     },
     onFileUploadComplete: function(file,req,res){
-      var fileimage = file.name
+      var fileimage = file.name;
+      req.middlewareStorage = {
+        fileimage: fileimage
+      }
     }
   }))
 

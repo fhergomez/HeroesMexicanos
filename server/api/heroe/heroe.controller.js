@@ -52,6 +52,24 @@ exports.scrapeUpload = function(req, res) {
   });
 }
 
+exports.upload = function(req,res){
+  var newHeroe = new Heroe();
+  var fileimage = req.middlewareStorage.fileimage;
+
+  newHeroe.image = 'assets/images/uploads' + fileimage;
+  newHeroe.email = req.body.email;
+  newHeroe.linkURL = req.body.linkURL;
+  newHeroe.title = req.body.title;
+  newHeroe.description = req.body.description;
+  newHeroe.userName = req.body.name;
+  newLook. _creator = req.body._createor
+  new.createTime = Date.now();
+  newLook upVotes = 0;
+  newLook.image = {
+    filename.slice(9);
+  newLook save.rgr
+  }
+}
 function handleError(res, err) {
   return res.send(500, err);
 }
