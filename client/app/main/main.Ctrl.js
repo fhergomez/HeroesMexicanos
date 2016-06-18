@@ -49,7 +49,7 @@
     }
 
     $scope.showUploadForm = function(){
-      $scope.uploadHeroForm = true;
+      $scope.uploadHeroeForm = true;
       $scope.scrapePostForm = false;
       $scope.uploadHeroeTitle = false;
     }
@@ -126,7 +126,7 @@
           description: $scope.heroe.description,
           email: $scope.user.email,
           name: $scope.user.name,
-          linkURL: $scope.hero._id,
+          linkURL: $scope.heroe._id,
           _creator: $scope.user._id
         }
       }).then(function(resp){
