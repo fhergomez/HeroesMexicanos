@@ -56,13 +56,13 @@ exports.upload = function(req,res){
   var newHeroe = new Heroe();
   var fileimage = req.middlewareStorage.fileimage;
 
-  newHeroe.image = 'assets/images/uploads' + fileimage;
+  newHeroe.image = '/assets/images/uploads' + fileimage;
   newHeroe.email = req.body.email;
   newHeroe.linkURL = req.body.linkURL;
   newHeroe.title = req.body.title;
   newHeroe.description = req.body.description;
   newHeroe.userName = req.body.name;
-  newHeroe. _creator = req.body._createor
+  newHeroe. _creator = req.body._creator
   newHeroe.createTime = Date.now();
   newHeore.upVotes = 0;
   newHeroe.save(function(err, item) {

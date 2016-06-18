@@ -18,8 +18,8 @@
     $scope.loading = false; // spinner
 
     $scope.picPreview = true;
-    $scope.uploadHeroeTitle = true;
     $scope.uploadHeroeForm = false;
+    $scope.uploadHeroeTitle = true;
 
     var alertSuccess = $alert({
       title: 'Felicidades!',
@@ -31,7 +31,7 @@
     });
 
     var alertFail = $alert({
-      title: 'No se guardo su héroe!',
+      title: 'No se guardo tu héroe!',
       content: 'Tu nuevo héroe no se añadio',
       placement: 'top-right',
       container: '#alertContainer',
@@ -48,19 +48,20 @@
       myModal.$promise.then(myModal.show);
     }
 
-    $scope.showUploadForm = function(){
-      $scope.uploadHeroeForm = true;
-      $scope.scrapePostForm = false;
-      $scope.uploadHeroeTitle = false;
-    }
-
     // will display all heroes from database
     heroesAPI.getAllHeroes().then(function(data){
+      console.log('looks found ');
       console.log(data);
       $scope.heroes = data.data;
     }).catch(function(err){
       console.log('failed to get heroes' + err);
     });
+
+    $scope.showUploadForm = function(){
+      $scope.uploadHeroeForm = true;
+      $scope.scrapePostForm = false;
+      $scope.uploadHeroeTitle = false;
+    }
 
     // Watch for changes to URL, scrape and display resuslts
     $scope.$watch('heroe.link', function(newVal, oldVal){
@@ -130,17 +131,17 @@
           _creator: $scope.user._id
         }
       }).then(function(resp){
-        console.log('successful upload');
+        console.log('successful ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
         $scope.heroes.splice(0,0,resp.data);
         $scope.heroe.title = "";
         $scope.heroe.description = "";
         $scope.picFile = "";
         $scope.picPreview = false;
-        alertSuccess();
+        alertSuccess.show();
       },function(resp){
-        alertFail();
+        alertFail.show();
       },function(evt){
-        var progressPercentage = parseInt(100.0 * evt.loaded/evt.total);
+        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
         console.log('Progress: ' + progressPercentage + '%' + evt.config.data.file.name);
       });
     }

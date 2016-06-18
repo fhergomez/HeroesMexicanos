@@ -15,7 +15,9 @@ exports.list = function(url,cb){
       var $ = cheerio.load(body);
       var pin = {};
       var $url = url;
+      console.log($url + " just added");
       var $img = $('.image img').attr('src'); // get from wikipedia
+      console.log($img + ' before description');
       var $desc = $('.mw-content-ltr p').eq(0).text(); // description from wikipedia (using first <p> element)
 
       console.log($img + ' pin url');
