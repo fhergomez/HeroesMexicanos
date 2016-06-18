@@ -62,13 +62,19 @@ exports.upload = function(req,res){
   newHeroe.title = req.body.title;
   newHeroe.description = req.body.description;
   newHeroe.userName = req.body.name;
-  newLook. _creator = req.body._createor
-  new.createTime = Date.now();
-  newLook upVotes = 0;
-  newLook.image = {
-    filename.slice(9);
-  newLook save.rgr
-  }
+  newHeroe. _creator = req.body._createor
+  newHeroe.createTime = Date.now();
+  newHeore.upVotes = 0;
+  newHeroe.save(function(err, item) {
+    if (err) {
+      console.log('error occured saving image');
+    } else {
+      console.log('Success post saved');
+      console.log(item);
+      res.status(200)
+        .json(item);
+    }
+  });
 }
 function handleError(res, err) {
   return res.send(500, err);

@@ -5,19 +5,21 @@
     .module('app')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI', '$alert'];
+  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI', '$alert','Upload'];
 
-  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI, $alert) {
+  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI, $alert, Upload) {
     $scope.user = Auth.getCurrentUser();
 
     $scope.heroe = {};
     $scope.heroes = [];
     $scope.scrapePostForm = true;
-    $scope.uploadHeroeTitle = true;
-    $scope.uploadHeroeForm = false;
     $scope.showScrapeDetails = false;
     $scope.gotScrapeResults = false;
     $scope.loading = false; // spinner
+
+    $scope.picPreview = true;
+    $scope.uploadHeroeTitle = true;
+    $scope.uploadHeroeForm = false;
 
     var alertSuccess = $alert({
       title: 'Felicidades!',
@@ -44,6 +46,12 @@
 
     $scope.showModal = function(){
       myModal.$promise.then(myModal.show);
+    }
+
+    $scope.showUploadForm = function(){
+      $scope.uploadHeroForm = true;
+      $scope.scrapePostForm = false;
+      $scope.uploadHeroeTitle = false;
     }
 
     // will display all heroes from database
@@ -104,6 +112,37 @@
         console.log(alertFail);
         $scope.showScrapeDetails = false;
       })
+    }
+
+    $scope.uploadPic = function(file){
+      upload.upload({
+        url: 'api/heroe/upload',
+        headers: {
+          'Content-Type':'multipart/form-data'
+        },
+        data:{
+          file: file,
+          title: $scope.heroe.title,
+          description: $scope.heroe.description,
+          email: $scope.user.email,
+          name: $scope.user.name,
+          linkURL: $scope.hero._id,
+          _creator: $scope.user._id
+        }
+      }).then(function(resp){
+        console.log('successful upload');
+        $scope.heroes.splice(0,0,resp.data);
+        $scope.heroe.title = "";
+        $scope.heroe.description = "";
+        $scope.picFile = "";
+        $scope.picPreview = false;
+        alertSuccess();
+      },function(resp){
+        alertFail();
+      },function(evt){
+        var progressPercentage = parseInt(100.0 * evt.loaded/evt.total);
+        console.log('Progress: ' + progressPercentage + '%' + evt.config.data.file.name);
+      });
     }
   }
 })();
