@@ -48,7 +48,7 @@ module.exports = function(app) {
         fileimage: fileimage
       }
     }
-  }))
+  }));
 
   app.use(cookieParser());
   app.use(passport.initialize());

@@ -13,7 +13,7 @@
       <form ng-submit="addScrapePost()" style="margin-top:30px">
         <h3>Encuentra tu heroe</h3>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Title" ng-model="heroe.title">
+          <input type="text" class="form-control" placeholder="Titulo" ng-model="heroe.title">
         </div>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Link URL  (Wikipedia)" ng-model="heroe.link" ng-disabled="gotScrapeResults">
@@ -26,6 +26,7 @@
 
       <!-- alert div -->
       <div class="col-md-6" id="alertContainer"></div>
+
 
     <div class="listing-details" ng-show="showScrapeDetails">
       <div class="form-group">
@@ -42,6 +43,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="button" class="btn btn-default" ng-click="$hide()">Cancelar</button>
+    </div>
     </div>
 
     </form>

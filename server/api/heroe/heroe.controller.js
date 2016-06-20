@@ -56,7 +56,7 @@ exports.upload = function(req,res){
   var newHeroe = new Heroe();
   var fileimage = req.middlewareStorage.fileimage;
 
-  newHeroe.image = '/assets/images/uploads' + fileimage;
+  newHeroe.image = '/assets/images/uploads/' + fileimage;
   newHeroe.email = req.body.email;
   newHeroe.linkURL = req.body.linkURL;
   newHeroe.title = req.body.title;
@@ -64,7 +64,7 @@ exports.upload = function(req,res){
   newHeroe.userName = req.body.name;
   newHeroe. _creator = req.body._creator
   newHeroe.createTime = Date.now();
-  newHeore.upVotes = 0;
+  newHeroe.upVotes = 0;
   newHeroe.save(function(err, item) {
     if (err) {
       console.log('error occured saving image');
