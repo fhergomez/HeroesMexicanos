@@ -23,6 +23,23 @@ exports.allHeroes = function(req, res) {
     })
 }
 
+exports.userHeroes = function(req,res){
+  var userEmail = req.query.email;
+  Look.find({
+    email:{
+      $in: userEmail
+    }
+  }).sort({
+    createTime: -1
+  }).exec(function(err,heroes){
+    if(err){
+      return handleError(res,err);
+    }
+    console.log(looks);
+    return res.status(200).json(looks);
+  });
+};
+
 exports.scrapeUpload = function(req, res) {
   var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
@@ -76,6 +93,58 @@ exports.upload = function(req,res){
     }
   });
 }
+
+exports.singleHeroe = function(req,res){
+  Heroe.findById(req.params.heroeId,function(heroe){
+    if(err){
+      return handleError(res,err);
+    }
+    if(!heroe){
+      return res.send(404);
+    }
+    return res.json(heroe);
+  });
+};
+
+exports.update = function(req,res){
+  if(req.body._id){
+    delete req.body._id;
+  }
+  Heroe.findById(req.params.id,function(err, heroe){
+    if(err){
+      return handleError(res,err);
+    }
+    if(!heroe){
+      return res.send(404);
+    }
+    var updated = _.merge(heroe,req.body);
+    updated.save(function(err){
+      if(err){
+        return handleError(res,err);
+      }
+      console.log(heroe);
+      return res.json(heroe);
+    });
+  });
+};
+
+exports.delete = function(req,res){
+  Heroe.findById(req.params.id,function(err,heroe){
+    if(err){
+      return handleError(res,err);
+    }
+    if(!heroe){
+      return res.send(404);
+    }
+    heroe.remove(function(err){
+      if(err){
+        return handleError(res,err);
+      }
+      return res.send(200);
+    });
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }
