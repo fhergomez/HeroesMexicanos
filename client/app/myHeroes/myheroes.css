@@ -1,0 +1,31 @@
+.edit-heroe {
+  color: #1F1F14;
+}
+.icon-edit {
+  margin-right: 10px;
+}
+.like-heroe {
+  color: #333333;
+}
+.likeCount {
+  font-size: 20px;
+  margin-left: 3px;
+}
+.icon-like {
+  margin-left: 10px
+}
+.description-textarea {
+  margin-left: 10px;
+}
+.title-input {
+  margin-left: 10px;
+}
+.show-no-heroes h3 {
+  text-align: center;
+}
+.user-heroes-title {
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 23px;
+  overflow: hidden;
+}
