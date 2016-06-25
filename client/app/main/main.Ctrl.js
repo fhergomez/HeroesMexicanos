@@ -5,9 +5,9 @@
     .module('app')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'heroesAPI', 'scrapeAPI', '$alert','Upload'];
+  MainCtrl.$inject = ['$scope', '$state', 'Auth', '$modal', 'scrapeAPI', '$http','$alert', 'heroesAPI', 'Upload'];
 
-  function MainCtrl($scope, $state, Auth, $modal, heroesAPI, scrapeAPI, $alert, Upload) {
+  function MainCtrl($scope, $state, Auth, $modal, scrapeAPI, $http, $alert, heroesAPI, Upload) {
     $scope.user = Auth.getCurrentUser();
 
     $scope.heroe = {};
@@ -18,8 +18,8 @@
     $scope.loading = false; // spinner
 
     $scope.picPreview = true;
-    $scope.uploadHeroeForm = false;
     $scope.uploadHeroeTitle = true;
+    $scope.uploadHeroeForm = false;
 
     var alertSuccess = $alert({
       title: 'Felicidades!',
@@ -112,7 +112,7 @@
         console.log('failed to post');
         console.log(alertFail);
         $scope.showScrapeDetails = false;
-      })
+      });
     }
 
     $scope.uploadPic = function(file){
@@ -135,7 +135,7 @@
         $scope.heroes.splice(0,0, resp.data);
         $scope.heroe.title = '';
         $scope.heroe.description = '';
-        $scope.picFile = ''
+        $scope.picFile = '';
         $scope.picPreview = false;
         alertSuccess.show();
       }, function(resp) {

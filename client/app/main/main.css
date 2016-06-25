@@ -2,40 +2,11 @@
   max-height: 300px;
   max-width: 300px;
 }
-.heroeLink {
-  color: #000;
-  text-decoration: none;
+.image-url-row {
+  float: left;
 }
-.heroeLink:hover {
-  text-decoration: none;
-  color: #000;
-}
-.well.well-lg {
-  width: 400px;
-  padding: 10px 15px;
-}
-.inputArea {
-  width: 300px;
-  height: 20px;
-}
-.form-control {
-  display: inline;
-  width: 70%;
-}
-.add-look-btn {
-  margin-left: 20px;
-}
-.uploadHeroTitle button {
-  max-width: 300px;
-  margin-left: 20px;
-}
-.well.well-lg {
-  width: 400px;
-  padding: 10px 15px;
-}
-.form-control {
-  display: inline;
-  width: 70%;
+.listing-description-row {
+  margin-top: 6px;
 }
 .row-centered {
     text-align: center;
@@ -95,6 +66,39 @@
   visibility: visible;
   opacity: 1;
 }
+.titleClass {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top: none;
+  padding: 0 5px;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 16px;
+}
+.uploadHeroeTitle button {
+  max-width: 300px;
+  margin-left: 20px;
+}
+.heroe-description-trim {
+  padding: 0 5px;
+  background-color: #e1e1e1;
+  border-bottom: 2px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+.uploaded-date {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #999;
+  padding: 0 5px;
+}
+.heroeLink {
+  color: #000;
+  text-decoration: none;
+}
+.heroeLink:hover {
+  text-decoration: none;
+  color: #000;
+}
 #alertContainer {
   margin-top: 10px;
 }
@@ -133,7 +137,7 @@
 #sortByWrap {
   float: left;
   margin-right: -1500px;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 #sortByWrap [class^=icon-],#sortByWrap [class*=" icon-"] {
   background: none repeat scroll 0 0 #f7faff;
@@ -143,9 +147,24 @@
   font-size: 18px;
   height: 40px;
   line-height: 40px;
-  margin-right: 5px;
+  margin-right: 10px;
   text-align: center;
   width: 40px;
+}
+#rssButton {
+  width: 60px
+}
+.well.well-lg {
+  width: 400px;
+  padding: 10px 15px;
+}
+.inputArea {
+  width: 300px;
+  height: 20px;
+}
+.form-control {
+  display: inline;
+  width: 70%;
 }
 #sortByWrap i {
   cursor: pointer;
@@ -153,12 +172,9 @@
   font-size: 18px;
   height: 40px;
   line-height: 40px;
-  margin-right: 5px;
+  margin-right: 10px;
   text-align: center;
-  width: 30px
-}
-#rssButton {
-  width: 60px
+  width: 40px
 }
 .thumbLike, .trashCan {
   padding: 0 5px;

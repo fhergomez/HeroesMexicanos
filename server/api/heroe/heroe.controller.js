@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var Heroe = require('./heroe.model');
 var path = require('path');
+var express = require('express');
 var utils = require('../../utils/utils.js');
 
 exports.allHeroes = function(req, res) {
@@ -20,12 +21,12 @@ exports.allHeroes = function(req, res) {
       console.log(heroes);
       return res.status(200)
         .json(heroes);
-    })
-}
+    });
+};
 
 exports.userHeroes = function(req,res){
   var userEmail = req.query.email;
-  Look.find({
+  Heroe.find({
     email:{
       $in: userEmail
     }
@@ -35,8 +36,8 @@ exports.userHeroes = function(req,res){
     if(err){
       return handleError(res,err);
     }
-    console.log(looks);
-    return res.status(200).json(looks);
+    console.log(heroes);
+    return res.status(200).json(heroes);
   });
 };
 
@@ -82,20 +83,20 @@ exports.upload = function(req,res){
   newHeroe. _creator = req.body._creator
   newHeroe.createTime = Date.now();
   newHeroe.upVotes = 0;
-  newHeroe.save(function(err, item) {
+  newHeroe.save(function(err, heroe) {
     if (err) {
       console.log('error occured saving image');
     } else {
       console.log('Success post saved');
-      console.log(item);
+      console.log(heroe);
       res.status(200)
-        .json(item);
+        .send(heroe);
     }
   });
 }
 
 exports.singleHeroe = function(req,res){
-  Heroe.findById(req.params.heroeId,function(heroe){
+  Heroe.findById(req.params.heroeId,function(err, heroe){
     if(err){
       return handleError(res,err);
     }
@@ -117,10 +118,10 @@ exports.update = function(req,res){
     if(!heroe){
       return res.send(404);
     }
-    var updated = _.merge(heroe,req.body);
+    var updated = _.merge(heroe, req.body);
     updated.save(function(err){
       if(err){
-        return handleError(res,err);
+        return handleError(res, err);
       }
       console.log(heroe);
       return res.json(heroe);
@@ -129,7 +130,7 @@ exports.update = function(req,res){
 };
 
 exports.delete = function(req,res){
-  Heroe.findById(req.params.id,function(err,heroe){
+  Heroe.findById(req.params.id,function(err, heroe){
     if(err){
       return handleError(res,err);
     }

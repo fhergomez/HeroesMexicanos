@@ -9,6 +9,7 @@
     return {
       createScrapeHeroe: createScrapeHeroe,
       getAllHeroes: getAllHeroes,
+      getUserHeroes: getUserHeroes,
       findOneHeroe: findOneHeroe,
       getUpdateHeroe: getUpdateHeroe,
       updateHeroe: updateHeroe,
@@ -40,7 +41,7 @@
     }
 
     function updateHeroe(heroe){
-      return $http.put('api/heroe/' + heroe._id,heroe);
+      return $http.put('api/heroe/' + heroe._id, heroe);
     }
 
     function deleteHeroe(heroe){

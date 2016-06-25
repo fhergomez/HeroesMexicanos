@@ -5,7 +5,7 @@
     .module('app')
     .controller('MyHeroesCtrl', MyHeroesCtrl);
 
-  MyLooksCtrl.$inject = ['$scope', '$modal', '$state', '$alert', 'heroesAPI', 'Auth'];
+  MyHeroesCtrl.$inject = ['$scope', '$modal', '$state', '$alert', 'heroesAPI', 'Auth'];
 
   function MyHeroesCtrl($scope, $modal, $state, $alert, heroesAPI, Auth) {
 
@@ -60,8 +60,7 @@
         .then(function(data) {
           console.log(data);
           $scope.editHeroe = data.data;
-        })
-        .catch(function(err) {
+        }).catch(function(err) {
           console.log('fallo en editar tu heroe ' + err);
         });
     }
@@ -69,21 +68,16 @@
     $scope.saveHeroe = function() {
       var heroe = $scope.editHeroe;
 
-      heroesAPI.getUpdateHeroe(heroe)
+      heroesAPI.updateHeroe(heroe)
         .then(function(data) {
           console.log('Heroe se actualizo');
           console.log(data);
           $scope.editHeroe.title = '';
           $scope.editHeroe.description = '';
           alertSuccess.show();
-        })
-        .catch(function(err) {
+        }).catch(function(err) {
           console.log('fallo en actualizar' + err);
           alertFail.show();
-        })
-        .finally(function() {
-          $scope.getUserHeroes();
-          $state.go('MyHeroes');
         });
     }
 
@@ -94,8 +88,7 @@
         .then(function(data) {
           console.log('éxito!, heroe ha sido eliminado');
           $scope.userHeroes.splice(index, 1);
-        })
-        .catch(function(err) {
+        }).catch(function(err) {
           console.log('fallo en eliminar tu heroe' + err);
         });
     }
