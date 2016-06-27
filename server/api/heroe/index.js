@@ -13,7 +13,8 @@ router.put('/:id', auth.isAuthenticated(), controller.update);
 router.get('/getAllHeroes', controller.allHeroes);
 router.get('/getUserHeroes', controller.userHeroes);
 
-router.get('/:heroId', controller.singleHeroe);
+router.get('/:heroeId', controller.singleHeroe);
+router.get('/popHeroes/:id', controller.popHeroes);
 
 router.delete('/:id', controller.delete);
 

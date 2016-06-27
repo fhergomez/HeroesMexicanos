@@ -6,13 +6,12 @@
   config.$inject = ['$stateProvider'];
 
   function config($stateProvider) {
-    $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl',
-        authenticate: true
-      });
+    $stateProvider.state('main', {
+      url: '/',
+      templateUrl: 'app/main/main.html',
+      controller: 'MainCtrl',
+      authenticate: true
+    });
   }
 
 })();

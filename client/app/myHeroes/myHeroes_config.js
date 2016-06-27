@@ -8,7 +8,7 @@
   function config($stateProvider) {
     $stateProvider.state('myheroes', {
       url: '/myheroes',
-      templateUrl: 'app/myheroes/myHeroes.html',
+      templateUrl: 'app/myHeroes/myHeroes.html',
       controller: 'MyHeroesCtrl',
       authenticate: true
     });

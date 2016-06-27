@@ -13,6 +13,7 @@
       findOneHeroe: findOneHeroe,
       getUpdateHeroe: getUpdateHeroe,
       updateHeroe: updateHeroe,
+      popHeroes: popHeroes,
       deleteHeroe: deleteHeroe
     }
 
@@ -20,6 +21,7 @@
       return $http.post('/api/heroe/scrapeUpload', heroe);
     }
 
+    // GET all Looks
     function getAllHeroes(){
       return $http.get('/api/heroe/getAllHeroes', {
         cache: true
@@ -34,6 +36,10 @@
 
     function findOneHeroe(heroe){
       return $http.get('/api/heroe/' + heroe);
+    }
+
+    function popHeroes(heroe){
+      return $http.get('/api/heroe/popHeroes/' + heroe);
     }
 
     function getUpdateHeroe(heroe){

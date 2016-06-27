@@ -44,7 +44,7 @@ exports.userHeroes = function(req,res){
 exports.scrapeUpload = function(req, res) {
   var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-  utils.downloadURI('http:' + req.body.image, './client/assets/images/uploads/' + random + '.png', function(filename) {
+  utils.downloadURI(req.body.image, './client/assets/images/uploads/' + random + '.png', function(filename) {
     console.log('done');
 
     var newHeroe = new Heroe();
@@ -68,6 +68,19 @@ exports.scrapeUpload = function(req, res) {
       }
     });
   });
+}
+
+exports.popHeroes = function(req, res) {
+  Heroe.find(req.params.id)
+    .sort('-upVotes') // get max number
+    .limit(6)
+    .exec(function(err, heroes) {
+      if (err) {
+        return handleError(res, err);
+      }
+      console.log(heroes);
+      return res.json(heroes);
+    });
 }
 
 exports.upload = function(req,res){
