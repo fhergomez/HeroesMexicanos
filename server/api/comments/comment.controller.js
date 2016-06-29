@@ -1,6 +1,6 @@
 'use strict';
 
-var comment = require('/comment.model');
+var comment = require('./comment.model');
 var express = require('express');
 
 exports.addComment = function(req,res) {
@@ -29,5 +29,14 @@ exports.getComments = function(req,res){
     'heroeId': req.params.id
   }).sort({
     createTime: -1
-  })
+  }).exec(function(err, comments){
+    if(err){
+      return res.send(500);
+    }
+    if(comments){
+      return res.send(404);
+    }
+    console.log(comments);
+    return res.status(200).json(comments);
+  });
 }
