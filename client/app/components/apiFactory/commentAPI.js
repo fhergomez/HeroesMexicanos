@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module(app).factory('commentAPI', commentAPI);
+  angular.module('app').factory('commentAPI', commentAPI);
 
   commentAPI.$inject = ['$http', '$stateParams'];
 
@@ -12,13 +12,23 @@
     });
 
     function addComment(comment){
-      return $http.post('/api/comments', comment);
+      return $http.post('/api/comments/', comment);
     }
 
     function getComments(id){
       return $http.get('/api/comments/' + id, {
         cache: true
       });
+      return (request.then(handleSuccess, handleError));
+    }
+
+    function handleError(response) {
+      throw (response.data);
+    }
+
+    // handle success
+    function handleSuccess(response) {
+      return (response.data);
     }
   }
-})
+})();
