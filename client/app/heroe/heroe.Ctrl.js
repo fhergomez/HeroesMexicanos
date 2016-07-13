@@ -13,6 +13,7 @@
     heroesAPI.findOneHeroe($scope.id).then(function(data){
       console.log(data);
       $scope.heroe = data.data;
+      // addView();
     }).catch(function(err){
       console.log('HeroesCtrl');
       console.log('Fallo en conseguir tu heroe', err);
@@ -41,7 +42,7 @@
         authorEmail: $scope.user.email,
         gravatar: $scope.user.gravatar,
         comment: $scope.comment.body,
-        heroId: $scope.id
+        heroeId: $scope.id
       }
       commentAPI.addComment(comment).then(function(data){
         console.log(data);

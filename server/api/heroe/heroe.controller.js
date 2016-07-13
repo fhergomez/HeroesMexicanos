@@ -49,6 +49,7 @@ exports.scrapeUpload = function(req, res) {
 
     var newHeroe = new Heroe();
     newHeroe.title = req.body.title;
+    newHeroe.image = filename.slice(9);
     newHeroe.email = req.body.email;
     newHeroe.linkURL = req.body.linkURL;
     newHeroe.description = req.body.description;
@@ -56,7 +57,6 @@ exports.scrapeUpload = function(req, res) {
     newHeroe._creator = req.body._creator;
     newHeroe.createTime = Date.now();
     newHeroe.upVotes = 0;
-    newHeroe.image = filename.slice(9);
     newHeroe.save(function(err, item) {
       if (err) {
         console.log('error occured saving image');
@@ -96,6 +96,7 @@ exports.upload = function(req,res){
   newHeroe. _creator = req.body._creator
   newHeroe.createTime = Date.now();
   newHeroe.upVotes = 0;
+
   newHeroe.save(function(err, heroe) {
     if (err) {
       console.log('error occured saving image');

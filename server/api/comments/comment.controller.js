@@ -10,7 +10,7 @@ exports.addComment = function(req,res) {
   newComment.author.email = req.body.authorEmail;
   newComment.gravatar = req.body.gravatar;
   newComment.comment = req.body.comment;
-  newComment.heroeId = req.body.heroId;
+  newComment.heroeId = req.body.heroeId;
   newComment.createTime = Date.now();
 
   newComment.save(function(err, comment){

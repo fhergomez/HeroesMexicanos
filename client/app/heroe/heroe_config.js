@@ -3,13 +3,13 @@
 
   angular.module('app').config(config);
 
-  config.$inject = ['$stateProvider'];
+    config.$inject = ['$stateProvider'];
 
-  function config($stateProvider) {
-    $stateProvider.state('heroe', {
-      url: '/hero/:heroeId',
-      templateUrl: 'app/heroe/heroe_detail_view.html',
-      controller: 'HeroeCtrl'
-    });
-  }
+    function config($stateProvider) {
+      $stateProvider.state('heroe', {
+        url: '/heroe/:heroeId',
+        templateUrl: 'app/heroe/heroe_detail_view.html',
+        controller: 'HeroeCtrl'
+      });
+    }
 })();

@@ -16,7 +16,7 @@ var CommentSchema = new Schema({
       type: String
     }
   },
-  lookId: {
+  heroeId: {
     type: Schema.ObjectId,
     ref: 'Heroe'
   },
