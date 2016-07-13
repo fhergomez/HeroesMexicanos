@@ -44,7 +44,7 @@ exports.userHeroes = function(req,res){
 exports.scrapeUpload = function(req, res) {
   var random = utils.randomizer(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-  utils.downloadURI(req.body.image, './client/assets/images/uploads/' + random + '.png', function(filename) {
+  utils.downloadURI('http:' + req.body.image, './client/assets/images/uploads/' + random + '.png', function(filename) {
     console.log('done');
 
     var newHeroe = new Heroe();

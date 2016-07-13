@@ -109,9 +109,10 @@
         console.log(data);
       }).catch(function(){
         alertFail.show();
-        console.log('failed to post');
+        console.log('no se pudo guardar del frontend');
         console.log(alertFail);
         $scope.showScrapeDetails = false;
+        alertFail.show();
       });
     }
 
