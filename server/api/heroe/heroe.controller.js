@@ -160,6 +160,42 @@ exports.delete = function(req,res){
   });
 };
 
+exports.addView = function(req,res){
+  Heroe.findById(req.params.id, function(err, heroe){
+    if(err){
+      return handleError(res,err);
+    }
+    if(!heroe){
+      return res.send(404);
+    }
+    heroe.views++;
+    heroe.save(function(err){
+      if(err){
+        return handleError(res,err);
+      }
+      return res.json(heroe);
+    });
+  });
+};
+
+exports.addUpvote = function(req,res){
+  Heroe.findById(req.params.id, function(err, heroe){
+    if(err){
+      return handleError(res,err);
+    }
+    if(!heroe){
+      return res.send(404);
+    }
+    heroe.upVotes++;
+    heroe.save(function(err){
+      if(err){
+        return handleError(res,err);
+      }
+      return res.json(heroe);
+    });
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

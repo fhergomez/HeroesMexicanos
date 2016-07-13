@@ -89,6 +89,15 @@
       }
     });
 
+    $scope.addVote = function(heroe){
+      heroesAPI.upVoteHeroe(heroe).then(function(data){
+        console.log(data);
+        heroe.upVotes++;
+      }).catch(function(data){
+        console.log('No se pudo añadir tu voto');
+      });
+    }
+
     $scope.addScrapePost = function(){
       var heroe = {
         description: $scope.heroe.description,

@@ -13,7 +13,7 @@
     heroesAPI.findOneHeroe($scope.id).then(function(data){
       console.log(data);
       $scope.heroe = data.data;
-      // addView();
+      addView();
     }).catch(function(err){
       console.log('HeroesCtrl');
       console.log('Fallo en conseguir tu heroe', err);
@@ -34,6 +34,16 @@
       console.log('Fallo en conseguir comentarios', err);
     });
 
+
+    $scope.addVote = function(heroe){
+      heroesAPI.upVoteHeroe(heroe).then(function(data){
+        console.log(data);
+        heroe.upVotes++;
+      }).catch(function(data){
+        console.log('No se pudo añadir tu voto');
+      });
+    }
+
     // Post new comment
     $scope.postComment = function(){
       var comment = {
@@ -51,7 +61,16 @@
       }).catch(function(err){
         console.log('Fallo en guardar tu comentario', err);
       });
-
     }
+
+    function addView(){
+      heroesAPI.addView($scope.id).then(function(res){
+        console.log('vistas han sido añadidas a tu heroe!');
+        console.log(res);
+      }).catch(function(err){
+        console.log('No pudimos añadir las vistas a tu heroe', err);
+      })
+    }
+
   }
 })();
