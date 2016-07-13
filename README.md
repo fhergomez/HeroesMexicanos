@@ -5,7 +5,7 @@ Navega a esta carpeta y ejecuta en la linea de comando:
 
 En el folder del servidor ejecuta:
 - nodemon app
-
+O
 - nodemon app.js
 
  y navega en el explorador a http://localhost:9000
