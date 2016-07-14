@@ -11,7 +11,8 @@
       'ngFileUpload',
       'angularGrid',
       'angularMoment',
-      'mgcrea.ngStrap' // for documentation got to http://mgcrea.github.io/angular-strap
+      'mgcrea.ngStrap', // for documentation go to http://mgcrea.github.io/angular-strap
+      'infinite-scroll' // for documentation go to https://sroze.github.io/ngInfiniteScroll/
     ])
     .config(config)
     .run(run)

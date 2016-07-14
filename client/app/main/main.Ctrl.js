@@ -21,6 +21,11 @@
     $scope.uploadHeroeTitle = true;
     $scope.uploadHeroeForm = false;
 
+    $scope.busy = true;
+    $scope.allData = [];
+    var page = 0;
+    var step = 3;
+
     var alertSuccess = $alert({
       title: 'Felicidades!',
       content: 'Tu nuevo héroe ha sido añadido',
@@ -58,10 +63,27 @@
     heroesAPI.getAllHeroes().then(function(data){
       console.log('heroes encontrados ');
       console.log(data);
-      $scope.heroes = data.data;
+      // $scope.heroes = data.data;
+      $scope.allData = data.data;
+      $scope.nextPage();
+      $scope.busy = false;
     }).catch(function(err){
-      console.log('No pude encontrar heroes' + err);
+      console.log('No pude encontrar heroes ' + err);
     });
+
+    $scope.nextPage = function(){
+      var heroeLength = $scope.heroe.length;
+      if($scope.busy){
+        return;
+      }
+      $scope.busy = true;
+      $scope.heroes = $scope.heroes.concat($scope.allData.splice(page * step, step));
+      page++;
+      $scope.busy = false;
+      if($scope.heroes.length === 0){
+        $scope.noMoreData = true;
+      }
+    };
 
     // Watch for changes to URL, scrape and display resuslts
     $scope.$watch('heroe.link', function(newVal, oldVal){
