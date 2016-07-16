@@ -1,103 +1,57 @@
 <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
-
-    <!-- start of modal content -->
     <div class="modal-content">
       <div class="modal-header" ng-show="title">
-        <button type="button" class="close" ng-click="$hide()"><i class="fa fa-times"></i></button>
-        <h4 class="modal-title">Añade tu heroe</h4>
+        <button type="button"
+                    class="close"
+                    ng-click="$hide()">&times;</button>
       </div>
 
-    <!-- start of modal body -->
-    <div class="modal-body" ng-show="scrapePostForm">
-      <form ng-submit="addScrapePost()" style="margin-top:30px">
-        <h3>Encuentra tu heroe</h3>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Titulo" ng-model="heroe.title">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Link URL  (Wikipedia)" ng-model="heroe.link" ng-disabled="gotScrapeResults">
-        </div>
+    <div class="modal-body" ng-show="content">
+      <div class="edit-heroe-title">
+       <h2>Modificar heroe</h2>
+      </div>
 
-        <div class="spinner"
-               ng-show="loading">
-          <img src="assets/images/spinner.gif">
-        </div>
-
-      <!-- alert div -->
-      <div class="col-md-6" id="alertContainer"></div>
-
-
-    <div class="listing-details" ng-show="showScrapeDetails">
       <div class="form-group">
-        <div class="row listing-description-row">
-          <label for="description" class="col-xs-12">Descripcion</label>
-        </div>
-        <textarea class="form-control" rows="3" ng-model="heroe.description"></textarea>
+        <label for="title">Titulo</label>
+          <input type="text"
+                  class="form-control title-input"
+                  placeholder="{{ editHeroe.title }}"
+                  ng-model="editHeroe.title" />
       </div>
 
       <div class="form-group">
-        <div class="listing-image">
-          <img src="{{heroe.imgThumb}}" class="img-thumbnail img-responsive">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <button type="button" class="btn btn-default" ng-click="$hide()">Cancelar</button>
-    </div>
-    </div>
-
-    </form>
-
-    <div class="modal-body">
-      <div class="uploadHeroeTitle">
-        <button class="btn btn-primary btn-lg btn-block" ng-show="uploadHeroeTitle" ng-click="showUploadForm()">Sube tu heroe</button>
-      </div>
-    </div>
-
-    <form name="myForm" enctype="multipart/form-data" ng-show="uploadHeroeForm">
-      <div class="row row-centered">
-        <div class="col-centered">
-          <div class="well well-lg">
-            <div class="form-group">
-              <label class="control-label" for="picFile"><h3>Detalles del Heroe</h3></label>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Titulo" ng-model="heroe.title" required /><i ng-show="myForm.title.$error.required">*se requiere</i>
-              </div>
-
-              <div class="form-group">
-                  <textarea class="form-control" placeholder="Descripcion" rows="3" ng-model="heroe.description" required>
-                    <i ng-show="myForm.description.$error.required">*se requiere</i>
-                  </textarea>
-              </div>
-
-              <div class="controls">
-                <input class="bottom-marg-15" type="file" ngf-select ng-model="picFile" accept="image/*" ngf-max-size="2MB" />
-
-                <span class="progress" ng-show="picFile.progress >= 0">
-                  <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" class="ng-binding"></div>
-                </span>
-
-                <i ng-show="myForm.file.$error.maxSize">Archivo esta muy grande {{picFile.size / 1000000|number:1}}MB: max {{picFile.$errorParam}}</i>
-                <img ng-show="myForm.file.$valid" ngf-src="!picFile.$error && picFile" class="img-thumbnail img-responsive">
-
-                <button id="loadButton" ng-disabled="!myForm.$valid" class="btn btn-primary btn-lg" ng-click="uploadPic(picFile)">Enviar</button>
-
-                <div class="col-md-6" id="alertContainer"></div>
-                <img ngf-src="picFile" class="img-thumbnail img-responsive" ng-show="picPreview">
-
-                <span ng-show="picFile.result">Upload Successful</span>
-                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-              </div>
+        <div class="row listing-description-row">
+        <label for="description"
+                  class="col-xs-12">Descripcion</label>
+          <textarea type="text"
+                  class="form-control description-textarea"
+                  placeholder="{{ editHeroe.description }}"
+                  ng-model="editHeroe.description"
+                  rows="3" />
             </div>
           </div>
-        </div>
-      </div>
-    </form>
 
-          <div class="modal-footer close-btn-main">
-            <button type="button" class="btn btn-default pull-left" ng-click="$hide()">Cerrar</button>
+      <div class="form-group">
+        <div class="row listing-delete-btn">
+          <button ng-click="deleteHeroe(heroe)"
+                      class="btn btn-warning btn-lg"
+                      ng-show="deleteBtn">BORRAR HEROES</button>
+            </div>
           </div>
 
-    </div><!-- end of modal body -->
+
+       <div class="col-md-6" id="alertContainer"></div>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button"
+                    class="btn btn-default pull-left"
+                    ng-click="$hide()">Cerrar</button>
+        <button type="button"
+          class="btn btn-primary btn-md pull-left"
+          ng-click="saveHeroe()">Guarda los cambios</button>
+      </div>
+    </div>
   </div>
 </div>
