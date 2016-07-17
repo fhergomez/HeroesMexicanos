@@ -4,8 +4,12 @@
   text-align: left;
 }
 
+.list-admin-users ul {
+  padding: 0;
+}
+
 .list-admin-users button {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .listing-images-admin img {

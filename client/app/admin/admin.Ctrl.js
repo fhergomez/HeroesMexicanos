@@ -47,6 +47,24 @@
       console.log(err);
     });
 
+    heroesAPI.getAllHeroes().then(function(data){
+      console.log(data);
+      $scope.heroes = data.data;
+    }).catch(function(err){
+      console.log('fallo en conseguir todos los heroes');
+    });
+
+    $scope.deleteUser = function(user){
+      adminAPI.deleteUser(user).then(function(data){
+        console.log('El usuario ha sido borrado');
+        var index = $scope.users.indexOf(user);
+        $scope.users.splice(index,1);
+      }).catch(function(err){
+        console.log(err);
+        console.log('fallo en borrar el usuario');
+      });
+    }
+
     $scope.editHeroe = function(heroe) {
       heroesAPI.getUpdateHeroe(heroe)
         .then(function(data) {
