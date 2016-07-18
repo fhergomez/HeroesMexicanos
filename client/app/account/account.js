@@ -8,27 +8,28 @@
     config.$inject = ['$stateProvider'];
 
     function config($stateProvider) {
-      $stateProvider
-      .state('login', {
+      $stateProvider.state('login', {
         url: '/login',
         templateUrl: 'app/account/login/login.html',
         controller: 'LoginCtrl'
-      })
-      .state('signup', {
+      }).state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupCtrl'
-      })
-      .state('settings', {
+      }).state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
-      })
-      .state('forgotpassword', {
+      }).state('forgotpassword', {
         url: '/forgotpassword',
         templateUrl: 'app/account/forgotpassword/forgotpassword.html',
         controller: 'ForgotPasswordCtrl',
+        authenticate: true
+      }).state('profile', {
+        url: '/profile',
+        templateUrl: 'app/account/profile/profile.html',
+        controller: 'ProfileCtrl',
         authenticate: true
       });
     }
