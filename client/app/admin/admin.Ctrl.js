@@ -12,6 +12,7 @@
     $scope.users = [];
     $scope.user = {};
     $scope.editHeroe = {};
+    $scope.deleteBtn = true;
 
     var alertSuccess = $alert({
       title: 'Guardado ',
@@ -92,13 +93,17 @@
     }
 
     $scope.deleteHeroe = function(heroe) {
-      var index = $scope.userHeroes.indexOf(heroe);
-
       heroesAPI.deleteHeroe(heroe)
         .then(function(data) {
+          var index = $scope.heroes.indexOf(heroe);
+          $scope.editHeroe.description = '';
+          $scope.editHeroe.title = '';
+          $scope.deleteBtn = false;
+          alertSuccess.show();
+          $scope.heroes.splice(index, 1);
           console.log('éxito!, heroe ha sido eliminado');
-          $scope.userHeroes.splice(index, 1);
         }).catch(function(err) {
+          alertFail.show();
           console.log('fallo en eliminar tu heroe' + err);
         });
     }
