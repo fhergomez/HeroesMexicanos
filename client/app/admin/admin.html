@@ -5,13 +5,13 @@
     <div class="col-md-4">
        <div class="list-admin-users">
           <ul>
-          <h2>All Users</h2>
+          <h2>Todos los Usuarios</h2>
             <li ng-repeat="user in users">
               <p>{{ user.name }}  -  {{ user.email }}
                 <button ng-click="deleteUser(user)"
                             class="btn btn-sm btn-warning"
-                            data-title="DELETE User  -  Cannot be Undone"
-                            bs-tooltip>DELETE</button>
+                            data-title="BORRAR usuario  -  no se puede desechar"
+                            bs-tooltip>BORRAR</button>
               </p></li>
           </ul>
         </div>

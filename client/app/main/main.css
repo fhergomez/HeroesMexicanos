@@ -105,6 +105,10 @@
 #loadButton {
   margin: 20px 0px 10px 105px;
 }
+
+.btn-primary {
+  margin: -10px;
+}
 #searchFilterWrap {
   margin: 0 auto;
   margin-top: 15px;
