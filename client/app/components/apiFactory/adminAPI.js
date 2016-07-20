@@ -8,6 +8,7 @@
   function adminAPI($http){
     return {
       getAllUsers: getAllUsers,
+      getOneUser: getOneUser,
       deleteUser: deleteUser
     }
 
@@ -16,6 +17,11 @@
       return $http.get(url, {
         cache: true
       });
+    }
+
+    function getOneUser(id){
+      var url = 'api/users/' + id;
+      return $http.get(url);
     }
 
     function deleteUser(){
